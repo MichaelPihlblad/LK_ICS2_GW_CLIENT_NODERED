@@ -1,7 +1,8 @@
 # LK ICS2 GW CLIENT NODERED
 
-Interface for LK ICS2, TCP GW and MQTT client
-Developed in Node-red primarily targeting raspberry pi 3, should work on any raspberry version or Linux PC.
+Interface for LK ICS2, floor heating room temperature regulator. https://www.lksystems.se/en/produkter/lk-golvvarme/produktsortiment/rumsreglering/ics.2-tradforbundentradlos/
+
+This SW is currently a Modbus TCP gateway and MQTT client, developed in Node-red primarily targeting raspberry pi 3, should work on any raspberry version or Linux PC.
 
 Should work with Raspberry PI RS485 HAT or any generic RS485 to USB or UART converter
 
@@ -108,8 +109,10 @@ wifi can be set up in many different ways:
   ```
 
 ## Links
+* [www.lksystems.se](https://www.lksystems.se/en/produkter/lk-golvvarme/produktsortiment/rumsreglering/ics.2-tradforbundentradlos/)
 * [Raspberry PI Documentation](https://www.raspberrypi.com/documentation/computers/remote-access.html)
 ## TODO
+* Update Documentation, add HW modbus info e.t.c.
 * Refactor - cleanup model for readability e.t.c.
 * Convert PI installation to read only mounted filesystem (for dependability and lifetime of SD-card)
 * Implement writing registers by mqtt
