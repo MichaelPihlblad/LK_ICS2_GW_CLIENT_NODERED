@@ -1,0 +1,17 @@
+{
+    "device": "/dev/pty/0",
+    "mqtt": {
+        "enable": false,
+        "host": "1192.168.1.1",
+        "port": 1883,
+        "user": "",
+        "pass": "",
+        "homeassistant": false,
+        "topic": "LKICS2"
+    },
+    "pollregisters": [  
+        "3:00101",
+        "3:00102",
+        "3:00103" 
+    ]
+}
