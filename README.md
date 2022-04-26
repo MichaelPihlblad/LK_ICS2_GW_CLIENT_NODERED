@@ -31,13 +31,15 @@ Note: For raspberry see [Raspberry install](#raspberry-install)
 5. Install the following nodered modules from inside the web editor ():
     * node-red-contrib-modbus
     * node-red-contrib-xlsx-to-json
-    * @node-red-contrib-themes/theme-collection    (for use of dark theme)   
+    * @node-red-contrib-themes/theme-collection    (for use of dark theme)
+    * node-red-dashboard
+    * node-red-node-ui-list
+    * node-red-node-ui-table
+    * node-red-node-serialport
     Note: can also alternatively be installed from command line but that requires a node-red restart 
    ```bash
    cd ~/.node-red/
-   npm install node-red-contrib-modbus
-   npm install node-red-contrib-xlsx-to-json
-   npm install @node-red-contrib-themes/theme-collection    (for use of dark theme)
+   npm install [package name]
    systemctl restart nodered   
    ``` 
  
@@ -107,6 +109,7 @@ wifi can be set up in many different ways:
 
   pi@LKICS2:~/ $ sudo rfkill unblock wifi
   ```
+* QEMU blank screen with spice: select view --> text consoles --> text console
 
 ## Links
 * [www.lksystems.se](https://www.lksystems.se/en/produkter/lk-golvvarme/produktsortiment/rumsreglering/ics.2-tradforbundentradlos/)

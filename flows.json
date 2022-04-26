@@ -2851,7 +2851,8 @@
         "mode": "link",
         "links": [
             "0d8b797254104c3a",
-            "22cf9016b54be651"
+            "22cf9016b54be651",
+            "affcfba0cb319026"
         ],
         "x": 1275,
         "y": 20,
@@ -4199,7 +4200,7 @@
         "type": "ui_ui_control",
         "z": "2eab96853f83d487",
         "name": "",
-        "events": "connect",
+        "events": "all",
         "x": 140,
         "y": 3200,
         "wires": [
@@ -4284,7 +4285,7 @@
         "type": "debug",
         "z": "2eab96853f83d487",
         "name": "debug_refresh_gui_form_mqtt",
-        "active": true,
+        "active": false,
         "tosidebar": true,
         "console": false,
         "tostatus": false,
@@ -6604,6 +6605,22 @@
         "wires": [
             [
                 "0d52227626f4733b"
+            ]
+        ]
+    },
+    {
+        "id": "affcfba0cb319026",
+        "type": "link in",
+        "z": "2eab96853f83d487",
+        "name": "linkIn_refreshGUIdeviceText",
+        "links": [
+            "2f0e13e17929d853"
+        ],
+        "x": 185,
+        "y": 3120,
+        "wires": [
+            [
+                "f05ad6bbe40a4dfd"
             ]
         ]
     },
