@@ -6,7 +6,7 @@ This SW is currently a Modbus TCP gateway and MQTT client, developed in Node-red
 
 Should work with Raspberry PI RS485 HAT or any generic RS485 to USB or UART converter
 
-Ready to use Raspberry image: [Not available yet, coming soon](https://x.x/LKICS2-raspios-bullseye-armhf-lite.zip)
+Ready to use Raspberry image: [v0.1.0](https://github.com/MichaelPihlblad/LK_ICS2_GW_CLIENT_NODERED/releases/download/v0.1.0/raspios-bullseye-armhf-lite.zip)
 
 
 ## INSTALL - Generic
