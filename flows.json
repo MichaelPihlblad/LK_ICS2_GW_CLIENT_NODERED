@@ -1585,7 +1585,7 @@
         "fieldType": "msg",
         "format": "json",
         "syntax": "mustache",
-        "template": "{\n    \"name\": \"LKICS2 {{payload.Register}}  ({{payload.Range}})\",\n    \"state_topic\": \"{{global.configuration.mqtt.topic}}/Modbus/{{payload.Modbus}}/value\",\n    \"payload_on\": \"1\",\n    \"payload_off\": \"0\",\n    \"unit_of_measurement\": \"{{payload.Unit}}\",\n    \"json_attributes_topic\": \"{{global.configuration.mqtt.topic}}/Modbus/{{payload.Modbus}}/attributes\",\n    \"availability\": [\n        {\n            \"topic\": \"{{global.configuration.mqtt.topic}}/Modbus/{{payload.Modbus}}/status\",\n            \"payload_available\": \"ok\",\n            \"payload_not_available\": \"error\"\n        },\n        {\n            \"topic\": \"{{global.configuration.mqtt.topic}}/connected\",\n            \"payload_available\": \"true\",\n            \"payload_not_available\": \"false\"\n        }\n    ],\n    \"availability_mode\": \"all\",\n    \"expire_after\": 122,\n    \"device\": {\n        \"manufacturer\": \"LK\",\n        \"model\": \"ICS2\",\n        \"via_device\": \"LKICS2_CLIENT_NODERED\",\n        \"identifiers\": [\"LKICS2\"]\n    }\n}    \n   \n\n",
+        "template": "{\n    \"name\": \"LKICS2 {{payload.Register}}  ({{payload.Range}})\",\n    \"state_topic\": \"{{global.configuration.mqtt.topic}}/Modbus/{{payload.Modbus}}/value\",\n    \"payload_on\": \"1\",\n    \"payload_off\": \"0\",\n    \"unit_of_measurement\": \"{{payload.Unit}}\",\n    \"json_attributes_topic\": \"{{global.configuration.mqtt.topic}}/Modbus/{{payload.Modbus}}/attributes\",\n    \"availability\": [\n        {\n            \"topic\": \"{{global.configuration.mqtt.topic}}/Modbus/{{payload.Modbus}}/status\",\n            \"payload_available\": \"ok\",\n            \"payload_not_available\": \"error\"\n        },\n        {\n            \"topic\": \"{{global.configuration.mqtt.topic}}/connected\",\n            \"payload_available\": \"true\",\n            \"payload_not_available\": \"false\"\n        }\n    ],\n    \"availability_mode\": \"all\",\n    \"expire_after\": 122,\n    \"unique_id\": \"LKICS2_1_{{payload.Modbus}}\",\n    \"device\": {\n        \"name\": \"LK-ICS2\",\n        \"manufacturer\": \"LK\",\n        \"model\": \"ICS2\",\n        \"via_device\": \"LKICS2_CLIENT_NODERED\",\n        \"identifiers\": [\"LKICS2\"],\n        \"configuration_url\": \"http://{{global.hostname}}:1880/ui/#!/1\",\n        \"connections\": [[\"Hostname\", \"{{global.hostname}}\"]]\n    }\n}    \n   \n\n",
         "output": "json",
         "x": 1310,
         "y": 200,
@@ -4560,7 +4560,7 @@
                 "t": "set",
                 "p": "physicalValue",
                 "pt": "msg",
-                "to": "modbusRespPayload.data[0] * modbusRegisterInfo.Scaling",
+                "to": "$round(modbusRespPayload.data[0] * modbusRegisterInfo.Scaling, 1)\t",
                 "tot": "jsonata"
             }
         ],
@@ -6625,6 +6625,109 @@
         ]
     },
     {
+        "id": "ebca64a1377384eb",
+        "type": "exec",
+        "z": "2eab96853f83d487",
+        "command": "hostname",
+        "addpay": "",
+        "append": "",
+        "useSpawn": "false",
+        "timer": "",
+        "winHide": false,
+        "oldrc": false,
+        "name": "",
+        "x": 580,
+        "y": 200,
+        "wires": [
+            [
+                "377c046cb8fc3c57"
+            ],
+            [],
+            []
+        ]
+    },
+    {
+        "id": "42f44062c5e42c29",
+        "type": "change",
+        "z": "2eab96853f83d487",
+        "name": "hostname_backup",
+        "rules": [
+            {
+                "t": "set",
+                "p": "hostname",
+                "pt": "global",
+                "to": "LKICS2.local",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 410,
+        "y": 200,
+        "wires": [
+            [
+                "ebca64a1377384eb"
+            ]
+        ]
+    },
+    {
+        "id": "377c046cb8fc3c57",
+        "type": "change",
+        "z": "2eab96853f83d487",
+        "name": "hostname_dyn",
+        "rules": [
+            {
+                "t": "set",
+                "p": "hostname",
+                "pt": "global",
+                "to": "$trim(payload)\t",
+                "tot": "jsonata"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 760,
+        "y": 200,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "4498b61beb99aba8",
+        "type": "inject",
+        "z": "2eab96853f83d487",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": true,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 190,
+        "y": 200,
+        "wires": [
+            [
+                "42f44062c5e42c29"
+            ]
+        ]
+    },
+    {
         "id": "95655692eb1b029b",
         "type": "http in",
         "z": "2d2723d863d43125",
@@ -7121,6 +7224,102 @@
         "x": 360,
         "y": 740,
         "wires": [
+            []
+        ]
+    },
+    {
+        "id": "63d1722896e17095",
+        "type": "change",
+        "z": "2d2723d863d43125",
+        "d": true,
+        "name": "getHostname",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "HOSTNAME",
+                "tot": "env"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 290,
+        "y": 40,
+        "wires": [
+            [
+                "af28bfd9a9a297e0"
+            ]
+        ]
+    },
+    {
+        "id": "3072e10ec5f084eb",
+        "type": "inject",
+        "z": "2d2723d863d43125",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 80,
+        "y": 40,
+        "wires": [
+            [
+                "63d1722896e17095",
+                "de544c36fa6d06c1"
+            ]
+        ]
+    },
+    {
+        "id": "af28bfd9a9a297e0",
+        "type": "debug",
+        "z": "2d2723d863d43125",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 530,
+        "y": 40,
+        "wires": []
+    },
+    {
+        "id": "de544c36fa6d06c1",
+        "type": "exec",
+        "z": "2d2723d863d43125",
+        "command": "hostname",
+        "addpay": "",
+        "append": "",
+        "useSpawn": "false",
+        "timer": "",
+        "winHide": false,
+        "oldrc": false,
+        "name": "",
+        "x": 360,
+        "y": 100,
+        "wires": [
+            [
+                "af28bfd9a9a297e0"
+            ],
+            [],
             []
         ]
     },
