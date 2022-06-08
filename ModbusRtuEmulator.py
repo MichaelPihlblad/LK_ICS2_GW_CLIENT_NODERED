@@ -1,6 +1,8 @@
 import binascii
+import json
 import pty
 import os
+import argparse
 import signal
 import serial
 import serial.rs485
@@ -51,7 +53,10 @@ class ModbusRtuEmulator:
         logging.basicConfig(format=FORMAT)
         global log
         log = logging.getLogger()
-        log.setLevel(logging.DEBUG)
+        if args.debug:
+            log.setLevel(logging.DEBUG)
+        else:
+            log.setLevel(logging.INFO)
         self.log = log
 
     def run_server(self):
@@ -111,13 +116,37 @@ def run_master_as_serial(master_ttyname, master_fd):
         print("<-- RX: 0x" + req.hex() + "\t\t/\tASCII: " + req_str_ascii)
 
 
+def update_configfile(slave_ttyname):
+    conf_file_path = os.path.dirname(__file__) + '/configuration.json' #  realpath
+    if not os.path.isfile(conf_file_path):
+        print('ERROR: \"' + conf_file_path + '\" does not exist!!!\n')
+        return
+    # File exist
+    with open(conf_file_path, 'r+') as f:
+        json_data = json.load(f)
+        if json_data['device'] == slave_ttyname:
+            print('INFO: ' + conf_file_path + ' already set to: ' + slave_ttyname + ' , nothing to do.\n')
+            return
+        # write new device to json file
+        json_data['device'] = slave_ttyname
+        f.seek(0)
+        f.write(json.dumps(json_data, indent=4) + "\n")
+        f.truncate()
+        print('Successfuly updated config file: ' + conf_file_path + ' to use serial terminal device: ' + slave_ttyname + '\n')
+
+
 def main():
     #process_parent_child()
     pty_master_fd, pty_slave_fd = pty.openpty()
     master_ttyname = os.ttyname(pty_master_fd)
+    slave_ttyname = os.ttyname(pty_slave_fd)
+
     print('filename of the Master: ' + master_ttyname)
     print('filedescriptor of master: ' + str(pty_master_fd))
-    print('Filename of the Slave: ' + str(os.ttyname(pty_slave_fd)))
+    print('Filename of the Slave: ' + slave_ttyname)
+    # Update configuration.json used by nodered to use the new slave pseudo terminal, if doing so is requested by input argument
+    if args.updateconfig:
+        update_configfile(slave_ttyname)
     #run_master_as_raw_file(master)
     #run_master_as_serial(master_ttyname, pty_master_fd)
     # start the modbus server
@@ -128,6 +157,13 @@ def main():
 
 
 if __name__ == '__main__':
+    print('Running ModbusRtuEmulator.py...\n')
+    argparser = argparse.ArgumentParser()
+    argparser.add_argument("-u", "--updateconfig", help="Update configuration.json file with the pseudo terminal "
+                                                        "serial slave created", action="store_true")
+    argparser.add_argument("-d", "--debug", help="Set log level to debug", action="store_true")
+    args = argparser.parse_args()
+
     try:
         main()
     except KeyboardInterrupt:
