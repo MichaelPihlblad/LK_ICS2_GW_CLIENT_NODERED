@@ -13,7 +13,15 @@ Ready to use Raspberry image: [v0.1.0](https://github.com/MichaelPihlblad/LK_ICS
 Note: For raspberry see [Raspberry install](#raspberry-install)
 1. Install node-red
 2. Checkout this repo in home folder (i.g. `~/LK_ICS2_GW_CLIENT_NODERED`)
-3. Edit `~/.node-red/settings.js`  
+3. replace node red files with symlinks:
+   ```bash
+   cd ~/.node-red
+   rm package.json package-lock.json settings.js
+   ln -s ../LK_ICS2_GW_CLIENT_NODERED/package.json
+   ln -s ../LK_ICS2_GW_CLIENT_NODERED/package-lock.json
+   ln -s ../LK_ICS2_GW_CLIENT_NODERED/settings.js   
+   ```
+   Note: in `~/.node-red/settings.js` dark theme has been set and flowfile is now set to:  
    ```diff
    - flowFile: "flows.json",
    + flowFile: "../LK_ICS2_GW_CLIENT_NODERED/flows.json",   
@@ -28,7 +36,13 @@ Note: For raspberry see [Raspberry install](#raspberry-install)
         ```
     * run this command: 
         > sudo setcap 'cap_net_bind_service=+ep'  $(eval readlink -f \`which node`)
-5. Install the following nodered modules from inside the web editor ():
+5. Install npm package dependencies listed in packages.json (requires a node-red restart) 
+   ```bash
+   cd ~/.node-red/
+   npm install
+   systemctl restart nodered   
+   ``` 
+   Alternatively Install the node packages / modules from inside the node-red web editor ():
     * node-red-contrib-modbus
     * node-red-contrib-xlsx-to-json
     * @node-red-contrib-themes/theme-collection    (for use of dark theme)
@@ -36,7 +50,8 @@ Note: For raspberry see [Raspberry install](#raspberry-install)
     * node-red-node-ui-list
     * node-red-node-ui-table
     * node-red-node-serialport
-    Note: can also alternatively be installed from command line but that requires a node-red restart 
+
+    Note: can also alternatively be installed individually from command line (requires a node-red restart) 
    ```bash
    cd ~/.node-red/
    npm install [package name]
@@ -62,6 +77,11 @@ Note: For raspberry see [Raspberry install](#raspberry-install)
 3. Or manually flash with dd, i.g.:
   > dd if=LKICS2-raspios-bullseye-armhf-lite.img of=/dev/mmcblk0
 4. Follow [Raspberry PI wifi config](#raspberry-pi-wifi-config)
+5. Update the code from github, ssh into the PI and:
+   ```bash
+   cd LK_ICS2_GW_CLIENT_NODERED
+   git pull
+   ```
 
 #### Raspberry PI wifi config
 wifi can be set up in many different ways:
@@ -87,6 +107,25 @@ wifi can be set up in many different ways:
 2. Follow node-red on raspberry install guide: https://nodered.org/docs/getting-started/raspberrypi
 3. Continue with: [Install generic, step 2](#install---generic)
 
+
+## Development in docker
+Note: This is much faster than developing in QEMU or on target. The docker environment is set up to run the python emulator and use it in the config file.
+
+From the git repo folder, i.e. ~/LK_ICS2_GW_CLIENT_NODERED 
+
+1. Build container: `docker build -t lkics2/node-red .`  
+2. Create container: `docker run -it -p 1880:1880 -v [absolute path to LK_ICS2_GW_CLIENT_NODERED]:/LK_ICS2_GW_CLIENT_NODERED --name lkics2-nodered lkics2/node-red`  
+  Notes: 
+    * This will mount the git repo as /LK_ICS2_GW_CLIENT_NODERED inside docker
+    * change volume path to where you have the git repo checked out. 
+    * If container already exists use start and exec commands below instead, or first remove the container: `docker rm lkics2-nodered`
+    
+ 
+* to start existing container: `docker start -ai lkics2-nodered`
+* to start a new shell on a running instance of the container: `docker exec -it lkics2-nodered /bin/bash`
+* to get logs from the container: `docker logs lkics2-nodered`
+
+
 ## Python emulator for testing
 * install python3 modules dependencies (i.g. using pip install):
   * pyserial
@@ -95,6 +134,7 @@ wifi can be set up in many different ways:
 
 
 ## Howto run raspberry image under qemu for local dev on PC
+Note: this is slow, consider using [Development in Docker](#development-in-docker) instead!
 1. Follow this guide: https://linuxconfig.org/how-to-run-the-raspberry-pi-os-in-a-virtual-machine-with-qemu-and-kvm
 2. Download qemu raspberry kernel image: https://github.com/dhruvvyas90/qemu-rpi-kernel
 
