@@ -11,7 +11,7 @@
         "id": "2d2723d863d43125",
         "type": "tab",
         "label": "tests",
-        "disabled": false,
+        "disabled": true,
         "info": "",
         "env": []
     },
@@ -31,22 +31,22 @@
         "category": "",
         "in": [
             {
-                "x": 40,
+                "x": 20,
                 "y": 100,
                 "wires": [
                     {
-                        "id": "c7310d59d70bdc60"
+                        "id": "f43f6a7e37f501c1"
                     }
                 ]
             }
         ],
         "out": [
             {
-                "x": 1260,
-                "y": 240,
+                "x": 1600,
+                "y": 260,
                 "wires": [
                     {
-                        "id": "20c5410fafc60d1b",
+                        "id": "d8a4aa8ee0ca5d7e",
                         "port": 0
                     }
                 ]
@@ -129,7 +129,7 @@
         ],
         "out": [
             {
-                "x": 720,
+                "x": 760,
                 "y": 80,
                 "wires": [
                     {
@@ -141,7 +141,13 @@
         ],
         "env": [],
         "meta": {},
-        "color": "#DDAA99"
+        "color": "#DDAA99",
+        "inputLabels": [
+            "Ext address (string)"
+        ],
+        "outputLabels": [
+            "Info (json)"
+        ]
     },
     {
         "id": "8a3abaeed43492c7",
@@ -162,7 +168,7 @@
         ],
         "out": [
             {
-                "x": 1740,
+                "x": 1880,
                 "y": 140,
                 "wires": [
                     {
@@ -191,14 +197,14 @@
                         "id": "88c8bac36917df6a"
                     },
                     {
-                        "id": "ebc1de458dcaaec0"
+                        "id": "a332e01e36a32bb2"
                     }
                 ]
             }
         ],
         "out": [
             {
-                "x": 1140,
+                "x": 1320,
                 "y": 120,
                 "wires": [
                     {
@@ -232,7 +238,9 @@
             "c1a5de6f7889d202"
         ],
         "x": 934,
-        "y": 1019
+        "y": 1019,
+        "w": 492,
+        "h": 162
     },
     {
         "id": "004befd4e4171dac",
@@ -254,7 +262,9 @@
             "99c0b21b1f3971b0"
         ],
         "x": 1034,
-        "y": 1419
+        "y": 1419,
+        "w": 692,
+        "h": 242
     },
     {
         "id": "26ecd9622bd134d0",
@@ -587,29 +597,6 @@
         "className": ""
     },
     {
-        "id": "20c5410fafc60d1b",
-        "type": "change",
-        "z": "b068bca0a71c83ad",
-        "name": "remove first row",
-        "rules": [
-            {
-                "t": "delete",
-                "p": "payload[0]",
-                "pt": "msg"
-            }
-        ],
-        "action": "",
-        "property": "",
-        "from": "",
-        "to": "",
-        "reg": false,
-        "x": 1080,
-        "y": 240,
-        "wires": [
-            []
-        ]
-    },
-    {
         "id": "3d2c47c1f54d627e",
         "type": "switch",
         "z": "b068bca0a71c83ad",
@@ -629,8 +616,8 @@
         "checkall": "true",
         "repair": false,
         "outputs": 2,
-        "x": 350,
-        "y": 240,
+        "x": 690,
+        "y": 260,
         "wires": [
             [
                 "a427f32e1f4fe70f",
@@ -652,7 +639,7 @@
         "arraySpltType": "len",
         "stream": false,
         "addname": "",
-        "x": 130,
+        "x": 270,
         "y": 100,
         "wires": [
             [
@@ -679,7 +666,7 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 820,
+        "x": 940,
         "y": 160,
         "wires": [
             [
@@ -707,7 +694,7 @@
         "checkall": "true",
         "repair": false,
         "outputs": 2,
-        "x": 620,
+        "x": 740,
         "y": 100,
         "wires": [
             [
@@ -737,8 +724,8 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 360,
-        "y": 300,
+        "x": 900,
+        "y": 340,
         "wires": [
             [
                 "a427f32e1f4fe70f",
@@ -779,8 +766,8 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 700,
-        "y": 240,
+        "x": 1020,
+        "y": 260,
         "wires": [
             [
                 "d8a4aa8ee0ca5d7e"
@@ -852,7 +839,7 @@
         "name": "Save object as global variable",
         "info": "For later use when parsing responses etc.",
         "x": 140,
-        "y": 500,
+        "y": 460,
         "wires": []
     },
     {
@@ -1022,12 +1009,10 @@
         "timeout": "",
         "count": "",
         "reduceRight": false,
-        "x": 890,
-        "y": 240,
+        "x": 1230,
+        "y": 260,
         "wires": [
-            [
-                "20c5410fafc60d1b"
-            ]
+            []
         ]
     },
     {
@@ -1050,7 +1035,7 @@
         "y": 560,
         "wires": [
             [
-                "f065b5dc137dda34"
+                "f91bd9060f202015"
             ]
         ]
     },
@@ -1058,42 +1043,19 @@
         "id": "d2b2e4cf8d8c3e71",
         "type": "debug",
         "z": "b068bca0a71c83ad",
-        "name": "",
+        "d": true,
+        "name": "debug_checkIfGlobalModbusRegistersExist",
         "active": true,
         "tosidebar": true,
         "console": false,
         "tostatus": false,
-        "complete": "false",
+        "complete": "payload",
+        "targetType": "msg",
         "statusVal": "",
         "statusType": "auto",
-        "x": 1010,
-        "y": 580,
+        "x": 1090,
+        "y": 480,
         "wires": []
-    },
-    {
-        "id": "f065b5dc137dda34",
-        "type": "change",
-        "z": "b068bca0a71c83ad",
-        "name": "remove first row",
-        "rules": [
-            {
-                "t": "delete",
-                "p": "payload[0]",
-                "pt": "msg"
-            }
-        ],
-        "action": "",
-        "property": "",
-        "from": "",
-        "to": "",
-        "reg": false,
-        "x": 400,
-        "y": 560,
-        "wires": [
-            [
-                "f91bd9060f202015"
-            ]
-        ]
     },
     {
         "id": "eaa193ec5f7b54b6",
@@ -1114,11 +1076,12 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 1030,
+        "x": 1150,
         "y": 160,
         "wires": [
             [
-                "3d2c47c1f54d627e"
+                "96e34add88e606f4",
+                "de7e942c68f6d908"
             ]
         ]
     },
@@ -1141,11 +1104,12 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 1060,
+        "x": 1180,
         "y": 100,
         "wires": [
             [
-                "3d2c47c1f54d627e"
+                "96e34add88e606f4",
+                "de7e942c68f6d908"
             ]
         ]
     },
@@ -1175,7 +1139,7 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 860,
+        "x": 980,
         "y": 100,
         "wires": [
             [
@@ -1203,7 +1167,7 @@
         "checkall": "true",
         "repair": false,
         "outputs": 2,
-        "x": 270,
+        "x": 390,
         "y": 100,
         "wires": [
             [
@@ -1234,7 +1198,7 @@
         "checkall": "true",
         "repair": false,
         "outputs": 2,
-        "x": 390,
+        "x": 510,
         "y": 60,
         "wires": [
             [
@@ -1264,11 +1228,130 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 580,
+        "x": 700,
         "y": 40,
         "wires": [
             [
                 "88518574a3ff97db"
+            ]
+        ]
+    },
+    {
+        "id": "96e34add88e606f4",
+        "type": "change",
+        "z": "b068bca0a71c83ad",
+        "name": "set_min_physical",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload.Min_physical",
+                "pt": "msg",
+                "to": "payload.Min * payload.Scaling",
+                "tot": "jsonata"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1410,
+        "y": 140,
+        "wires": [
+            [
+                "5ec778b9f9bf9035"
+            ]
+        ]
+    },
+    {
+        "id": "5ec778b9f9bf9035",
+        "type": "change",
+        "z": "b068bca0a71c83ad",
+        "name": "set_max_physical",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload.Max_physical",
+                "pt": "msg",
+                "to": "payload.Max * payload.Scaling",
+                "tot": "jsonata"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 450,
+        "y": 260,
+        "wires": [
+            [
+                "3d2c47c1f54d627e"
+            ]
+        ]
+    },
+    {
+        "id": "dbc85c48ed1fef70",
+        "type": "debug",
+        "z": "b068bca0a71c83ad",
+        "name": "debug_MinOrMaxNotNumber",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1520,
+        "y": 40,
+        "wires": []
+    },
+    {
+        "id": "de7e942c68f6d908",
+        "type": "switch",
+        "z": "b068bca0a71c83ad",
+        "name": "",
+        "property": "$type(payload.Min) != \"number\" \tor $type(payload.Max) != \"number\"\t",
+        "propertyType": "jsonata",
+        "rules": [
+            {
+                "t": "true"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 1,
+        "x": 1330,
+        "y": 40,
+        "wires": [
+            [
+                "dbc85c48ed1fef70"
+            ]
+        ]
+    },
+    {
+        "id": "f43f6a7e37f501c1",
+        "type": "change",
+        "z": "b068bca0a71c83ad",
+        "name": "delRow0",
+        "rules": [
+            {
+                "t": "delete",
+                "p": "payload[0]",
+                "pt": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 140,
+        "y": 100,
+        "wires": [
+            [
+                "c7310d59d70bdc60"
             ]
         ]
     },
@@ -1630,18 +1713,18 @@
         "id": "31d3f37765609c67",
         "type": "template",
         "z": "8a3abaeed43492c7",
-        "name": "set_mqtt_ha_config",
+        "name": "mqtt_ha_config_binarysensor",
         "field": "payload",
         "fieldType": "msg",
         "format": "json",
         "syntax": "mustache",
-        "template": "{\n    \"name\": \"LKICS2 {{payload.Register}}  ({{payload.Range}})\",\n    \"state_topic\": \"{{global.configuration.mqtt.topic}}/Modbus/{{payload.Modbus}}/value\",\n    \"payload_on\": \"1\",\n    \"payload_off\": \"0\",\n    \"unit_of_measurement\": \"{{payload.Unit}}\",\n    \"json_attributes_topic\": \"{{global.configuration.mqtt.topic}}/Modbus/{{payload.Modbus}}/attributes\",\n    \"availability\": [\n        {\n            \"topic\": \"{{global.configuration.mqtt.topic}}/Modbus/{{payload.Modbus}}/status\",\n            \"payload_available\": \"ok\",\n            \"payload_not_available\": \"error\"\n        },\n        {\n            \"topic\": \"{{global.configuration.mqtt.topic}}/connected\",\n            \"payload_available\": \"true\",\n            \"payload_not_available\": \"false\"\n        }\n    ],\n    \"availability_mode\": \"all\",\n    \"expire_after\": 122,\n    \"unique_id\": \"LKICS2_1_{{payload.Modbus}}\",\n    \"device\": {\n        \"name\": \"LK-ICS2\",\n        \"manufacturer\": \"LK\",\n        \"model\": \"ICS2\",\n        \"via_device\": \"LKICS2_CLIENT_NODERED\",\n        \"identifiers\": [\"LKICS2\"],\n        \"configuration_url\": \"http://{{global.hostname}}:1880/ui/#!/1\",\n        \"connections\": [[\"Hostname\", \"{{global.hostname}}\"]]\n    }\n}    \n   \n\n",
+        "template": "{\n    \"name\": \"LKICS2 {{payload.Register}}  ({{payload.Range}})\",\n    \"state_topic\": \"{{global.configuration.mqtt.topic}}/Modbus/{{payload.Modbus}}/value\",\n    \"payload_on\": \"1\",\n    \"payload_off\": \"0\",\n    \"json_attributes_topic\": \"{{global.configuration.mqtt.topic}}/Modbus/{{payload.Modbus}}/attributes\",\n    \"availability\": [\n        {\n            \"topic\": \"{{global.configuration.mqtt.topic}}/Modbus/{{payload.Modbus}}/status\",\n            \"payload_available\": \"ok\",\n            \"payload_not_available\": \"error\"\n        },\n        {\n            \"topic\": \"{{global.configuration.mqtt.topic}}/connected\",\n            \"payload_available\": \"true\",\n            \"payload_not_available\": \"false\"\n        }\n    ],\n    \"availability_mode\": \"all\",\n    \"expire_after\": 122,\n    \"unique_id\": \"LKICS2_1_{{payload.Modbus}}\",\n    \"device\": {\n        \"name\": \"LK-ICS2\",\n        \"manufacturer\": \"LK\",\n        \"model\": \"ICS2\",\n        \"via_device\": \"LKICS2_CLIENT_NODERED\",\n        \"identifiers\": [\"LKICS2\"],\n        \"configuration_url\": \"http://{{global.hostname}}:1880/ui/#!/1\",\n        \"connections\": [[\"Hostname\", \"{{global.hostname}}\"]]\n    }\n}    \n   \n\n",
         "output": "json",
-        "x": 1310,
+        "x": 1350,
         "y": 200,
         "wires": [
             [
-                "c5945bd2ba2f633d"
+                "2d18ba49bb77f343"
             ]
         ]
     },
@@ -1665,68 +1748,14 @@
         "checkall": "true",
         "repair": false,
         "outputs": 2,
-        "x": 640,
+        "x": 740,
         "y": 220,
         "wires": [
             [
-                "395d8ff9888ba93f"
+                "eed04fe29927cb5c"
             ],
             [
-                "475b1de4ce84af6d"
-            ]
-        ]
-    },
-    {
-        "id": "395d8ff9888ba93f",
-        "type": "change",
-        "z": "8a3abaeed43492c7",
-        "name": "binary_sensor",
-        "rules": [
-            {
-                "t": "set",
-                "p": "ha_sensorType",
-                "pt": "msg",
-                "to": "binary_sensor",
-                "tot": "str"
-            }
-        ],
-        "action": "",
-        "property": "",
-        "from": "",
-        "to": "",
-        "reg": false,
-        "x": 840,
-        "y": 200,
-        "wires": [
-            [
-                "eed04fe29927cb5c"
-            ]
-        ]
-    },
-    {
-        "id": "475b1de4ce84af6d",
-        "type": "change",
-        "z": "8a3abaeed43492c7",
-        "name": "sensor",
-        "rules": [
-            {
-                "t": "set",
-                "p": "ha_sensorType",
-                "pt": "msg",
-                "to": "sensor",
-                "tot": "str"
-            }
-        ],
-        "action": "",
-        "property": "",
-        "from": "",
-        "to": "",
-        "reg": false,
-        "x": 810,
-        "y": 240,
-        "wires": [
-            [
-                "eed04fe29927cb5c"
+                "20cb70c68b1ea58d"
             ]
         ]
     },
@@ -1750,30 +1779,7 @@
         "wires": [
             [
                 "198e45beb15e5cce",
-                "1885dad6d8ebaed1"
-            ]
-        ]
-    },
-    {
-        "id": "1885dad6d8ebaed1",
-        "type": "switch",
-        "z": "8a3abaeed43492c7",
-        "name": "If_HA_Enabled",
-        "property": "configuration.mqtt.homeassistant",
-        "propertyType": "global",
-        "rules": [
-            {
-                "t": "true"
-            }
-        ],
-        "checkall": "true",
-        "repair": false,
-        "outputs": 1,
-        "x": 440,
-        "y": 220,
-        "wires": [
-            [
-                "38bd41289795be88"
+                "57440937e41c7aff"
             ]
         ]
     },
@@ -1781,13 +1787,13 @@
         "id": "eed04fe29927cb5c",
         "type": "change",
         "z": "8a3abaeed43492c7",
-        "name": "mqtt_topic_ha_config",
+        "name": "mqtt_topic_ha_config_binarysensor",
         "rules": [
             {
                 "t": "set",
                 "p": "topic",
                 "pt": "msg",
-                "to": "\"homeassistant/\" & ha_sensorType & \"/\" & $globalContext(\"configuration.mqtt.topic\") & \"/\" & $replace(payload.Modbus, \":\", \"\") & \"/config\"",
+                "to": "\"homeassistant/binary_sensor/\" & $globalContext(\"configuration.mqtt.topic\") & \"/\" & $replace(payload.Modbus, \":\", \"\") & \"/config\"",
                 "tot": "jsonata"
             }
         ],
@@ -1796,7 +1802,7 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 1080,
+        "x": 1040,
         "y": 200,
         "wires": [
             [
@@ -1833,7 +1839,7 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 1620,
+        "x": 1760,
         "y": 140,
         "wires": [
             [
@@ -1865,9 +1871,357 @@
         "targetType": "full",
         "statusVal": "",
         "statusType": "auto",
-        "x": 1450,
-        "y": 280,
+        "x": 1710,
+        "y": 80,
         "wires": []
+    },
+    {
+        "id": "d6f5b7a66d3e9a67",
+        "type": "template",
+        "z": "8a3abaeed43492c7",
+        "name": "mqtt_ha_config_sensor",
+        "field": "payload",
+        "fieldType": "msg",
+        "format": "json",
+        "syntax": "mustache",
+        "template": "{\n    \"name\": \"LKICS2 {{payload.Register}}  ({{payload.Range}})\",\n    \"state_topic\": \"{{global.configuration.mqtt.topic}}/Modbus/{{payload.Modbus}}/value\",\n    \"unit_of_measurement\": \"{{payload.Unit}}\",\n    \"json_attributes_topic\": \"{{global.configuration.mqtt.topic}}/Modbus/{{payload.Modbus}}/attributes\",\n    \"availability\": [\n        {\n            \"topic\": \"{{global.configuration.mqtt.topic}}/Modbus/{{payload.Modbus}}/status\",\n            \"payload_available\": \"ok\",\n            \"payload_not_available\": \"error\"\n        },\n        {\n            \"topic\": \"{{global.configuration.mqtt.topic}}/connected\",\n            \"payload_available\": \"true\",\n            \"payload_not_available\": \"false\"\n        }\n    ],\n    \"availability_mode\": \"all\",\n    \"expire_after\": 122,\n    \"unique_id\": \"LKICS2_1_{{payload.Modbus}}\",\n    \"device\": {\n        \"name\": \"LK-ICS2\",\n        \"manufacturer\": \"LK\",\n        \"model\": \"ICS2\",\n        \"via_device\": \"LKICS2_CLIENT_NODERED\",\n        \"identifiers\": [\"LKICS2\"],\n        \"configuration_url\": \"http://{{global.hostname}}:1880/ui/#!/1\",\n        \"connections\": [[\"Hostname\", \"{{global.hostname}}\"]]\n    }\n}    \n   \n\n",
+        "output": "json",
+        "x": 1330,
+        "y": 240,
+        "wires": [
+            [
+                "2d18ba49bb77f343"
+            ]
+        ]
+    },
+    {
+        "id": "20cb70c68b1ea58d",
+        "type": "change",
+        "z": "8a3abaeed43492c7",
+        "name": "mqtt_topic_ha_config_sensor",
+        "rules": [
+            {
+                "t": "set",
+                "p": "topic",
+                "pt": "msg",
+                "to": "\"homeassistant/sensor/\" & $globalContext(\"configuration.mqtt.topic\") & \"/\" & $replace(payload.Modbus, \":\", \"\") & \"/config\"",
+                "tot": "jsonata"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1060,
+        "y": 240,
+        "wires": [
+            [
+                "d6f5b7a66d3e9a67"
+            ]
+        ]
+    },
+    {
+        "id": "d11b9602df8a896a",
+        "type": "change",
+        "z": "8a3abaeed43492c7",
+        "name": "mqtt_topic_ha_config_switch",
+        "rules": [
+            {
+                "t": "set",
+                "p": "topic",
+                "pt": "msg",
+                "to": "\"homeassistant/switch/\" & $globalContext(\"configuration.mqtt.topic\") & \"/\" & $replace(payload.Modbus, \":\", \"\") & \"/config\"",
+                "tot": "jsonata"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1040,
+        "y": 320,
+        "wires": [
+            [
+                "b843489b363bd47a"
+            ]
+        ]
+    },
+    {
+        "id": "4518cf28d6c1b610",
+        "type": "change",
+        "z": "8a3abaeed43492c7",
+        "name": "mqtt_topic_ha_config_number",
+        "rules": [
+            {
+                "t": "set",
+                "p": "topic",
+                "pt": "msg",
+                "to": "\"homeassistant/number/\" & $globalContext(\"configuration.mqtt.topic\") & \"/\" & $replace(payload.Modbus, \":\", \"\") & \"/config\"",
+                "tot": "jsonata"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1050,
+        "y": 360,
+        "wires": [
+            [
+                "e1c380c8d2407345"
+            ]
+        ]
+    },
+    {
+        "id": "57440937e41c7aff",
+        "type": "switch",
+        "z": "8a3abaeed43492c7",
+        "name": "CheckEntityType",
+        "property": "$substringBefore(payload.Modbus, \":\")\t",
+        "propertyType": "jsonata",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "1",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "3",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "0",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "4",
+                "vt": "str"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 4,
+        "x": 510,
+        "y": 320,
+        "wires": [
+            [
+                "38bd41289795be88"
+            ],
+            [
+                "38bd41289795be88"
+            ],
+            [
+                "d11b9602df8a896a"
+            ],
+            [
+                "f5503963a012776b"
+            ]
+        ]
+    },
+    {
+        "id": "4ad0016d3fc7d8a0",
+        "type": "comment",
+        "z": "8a3abaeed43492c7",
+        "name": "Entity types: 0 = Coils  -Read + Write 1 = Inputs (discrete input) - Read 3 = Input registers - Read 4 = Holding registers - Read + Write",
+        "info": "\n0 = Coils  -Read + Write\n1 = Inputs (discrete input) - Read\n3 = Input registers - Read\n4 = Holding registers - Read + Write",
+        "x": 540,
+        "y": 520,
+        "wires": []
+    },
+    {
+        "id": "9ad399882fbc3aab",
+        "type": "comment",
+        "z": "8a3abaeed43492c7",
+        "name": "TODO: implement select (enum)  for holding registers?",
+        "info": "try parsing the notes to build the list...",
+        "x": 200,
+        "y": 260,
+        "wires": []
+    },
+    {
+        "id": "e1c380c8d2407345",
+        "type": "template",
+        "z": "8a3abaeed43492c7",
+        "name": "mqtt_ha_config_number",
+        "field": "payload",
+        "fieldType": "msg",
+        "format": "json",
+        "syntax": "mustache",
+        "template": "{\n    \"name\": \"LKICS2 {{payload.Register}}  ({{payload.Range}})\",\n    \"state_topic\": \"{{global.configuration.mqtt.topic}}/Modbus/{{payload.Modbus}}/value\",\n    \"command_topic\": \"{{global.configuration.mqtt.topic}}/Modbus/{{payload.Modbus}}/set\", \n    \"unit_of_measurement\": \"{{payload.Unit}}\",\n    \"min\": \"{{payload.Min_physical}}\",\n    \"max\": \"{{payload.Max_physical}}\",\n    \"step\": \"{{step_setting}}\",\n    \"json_attributes_topic\": \"{{global.configuration.mqtt.topic}}/Modbus/{{payload.Modbus}}/attributes\",\n    \"availability\": [\n        {\n            \"topic\": \"{{global.configuration.mqtt.topic}}/Modbus/{{payload.Modbus}}/status\",\n            \"payload_available\": \"ok\",\n            \"payload_not_available\": \"error\"\n        },\n        {\n            \"topic\": \"{{global.configuration.mqtt.topic}}/connected\",\n            \"payload_available\": \"true\",\n            \"payload_not_available\": \"false\"\n        }\n    ],\n    \"availability_mode\": \"all\",\n    \"expire_after\": 122,\n    \"unique_id\": \"LKICS2_1_{{payload.Modbus}}\",\n    \"device\": {\n        \"name\": \"LK-ICS2\",\n        \"manufacturer\": \"LK\",\n        \"model\": \"ICS2\",\n        \"via_device\": \"LKICS2_CLIENT_NODERED\",\n        \"identifiers\": [\"LKICS2\"],\n        \"configuration_url\": \"http://{{global.hostname}}:1880/ui/#!/1\",\n        \"connections\": [[\"Hostname\", \"{{global.hostname}}\"]]\n    }\n}    \n   \n\n",
+        "output": "json",
+        "x": 1350,
+        "y": 360,
+        "wires": [
+            [
+                "2d18ba49bb77f343"
+            ]
+        ]
+    },
+    {
+        "id": "b843489b363bd47a",
+        "type": "template",
+        "z": "8a3abaeed43492c7",
+        "name": "mqtt_ha_config_switch",
+        "field": "payload",
+        "fieldType": "msg",
+        "format": "json",
+        "syntax": "mustache",
+        "template": "{\n    \"name\": \"LKICS2 {{payload.Register}}  ({{payload.Range}})\",\n    \"entity_category\": \"config\",\n    \"state_topic\": \"{{global.configuration.mqtt.topic}}/Modbus/{{payload.Modbus}}/value\",\n    \"payload_on\": \"1\",\n    \"payload_off\": \"0\",\n    \"command_topic\": \"{{global.configuration.mqtt.topic}}/Modbus/{{payload.Modbus}}/set\",\n    \"json_attributes_topic\": \"{{global.configuration.mqtt.topic}}/Modbus/{{payload.Modbus}}/attributes\",\n    \"availability\": [\n        {\n            \"topic\": \"{{global.configuration.mqtt.topic}}/Modbus/{{payload.Modbus}}/status\",\n            \"payload_available\": \"ok\",\n            \"payload_not_available\": \"error\"\n        },\n        {\n            \"topic\": \"{{global.configuration.mqtt.topic}}/connected\",\n            \"payload_available\": \"true\",\n            \"payload_not_available\": \"false\"\n        }\n    ],\n    \"availability_mode\": \"all\",\n    \"expire_after\": 122,\n    \"unique_id\": \"LKICS2_1_{{payload.Modbus}}\",\n    \"device\": {\n        \"name\": \"LK-ICS2\",\n        \"manufacturer\": \"LK\",\n        \"model\": \"ICS2\",\n        \"via_device\": \"LKICS2_CLIENT_NODERED\",\n        \"identifiers\": [\"LKICS2\"],\n        \"configuration_url\": \"http://{{global.hostname}}:1880/ui/#!/1\",\n        \"connections\": [[\"Hostname\", \"{{global.hostname}}\"]]\n    }\n}    \n   \n\n",
+        "output": "json",
+        "x": 1340,
+        "y": 320,
+        "wires": [
+            [
+                "2d18ba49bb77f343"
+            ]
+        ]
+    },
+    {
+        "id": "20fa5576ff425e90",
+        "type": "change",
+        "z": "8a3abaeed43492c7",
+        "name": "step 0.5",
+        "rules": [
+            {
+                "t": "set",
+                "p": "step_setting",
+                "pt": "msg",
+                "to": "0.5",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 740,
+        "y": 380,
+        "wires": [
+            [
+                "4518cf28d6c1b610"
+            ]
+        ]
+    },
+    {
+        "id": "f5503963a012776b",
+        "type": "switch",
+        "z": "8a3abaeed43492c7",
+        "name": "if unit celsius",
+        "property": "payload.Unit",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "°C",
+                "vt": "str"
+            },
+            {
+                "t": "else"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 2,
+        "x": 570,
+        "y": 400,
+        "wires": [
+            [
+                "20fa5576ff425e90"
+            ],
+            [
+                "82ec21f6710631d1"
+            ]
+        ]
+    },
+    {
+        "id": "82ec21f6710631d1",
+        "type": "change",
+        "z": "8a3abaeed43492c7",
+        "name": "step 1",
+        "rules": [
+            {
+                "t": "set",
+                "p": "step_setting",
+                "pt": "msg",
+                "to": "1",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 730,
+        "y": 420,
+        "wires": [
+            [
+                "4518cf28d6c1b610"
+            ]
+        ]
+    },
+    {
+        "id": "2d18ba49bb77f343",
+        "type": "switch",
+        "z": "8a3abaeed43492c7",
+        "name": "If_HA_Enabled",
+        "property": "configuration.mqtt.homeassistant",
+        "propertyType": "global",
+        "rules": [
+            {
+                "t": "true"
+            },
+            {
+                "t": "false"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 2,
+        "x": 1647.5,
+        "y": 306.25,
+        "wires": [
+            [
+                "c5945bd2ba2f633d"
+            ],
+            [
+                "e192af270167798f"
+            ]
+        ]
+    },
+    {
+        "id": "e192af270167798f",
+        "type": "change",
+        "z": "8a3abaeed43492c7",
+        "name": "setEmptyString",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1900,
+        "y": 300,
+        "wires": [
+            [
+                "c5945bd2ba2f633d"
+            ]
+        ]
     },
     {
         "id": "88c8bac36917df6a",
@@ -1925,7 +2279,7 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 810,
+        "x": 990,
         "y": 120,
         "wires": [
             [
@@ -1952,38 +2306,11 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 1000,
+        "x": 1180,
         "y": 120,
         "wires": [
             [
                 "ba569f47e9921d2c"
-            ]
-        ]
-    },
-    {
-        "id": "f13966848e73bd6f",
-        "type": "change",
-        "z": "45fbecf1fa8ca370",
-        "name": "mqtt_topic_ha_config",
-        "rules": [
-            {
-                "t": "set",
-                "p": "topic",
-                "pt": "msg",
-                "to": "\"homeassistant/\" & ha_sensorType & \"/\" & \t$globalContext(\"configuration.mqtt.topic\") & \t\"/\" & $replace(payload.Modbus, \":\", \"\") & \"/config\"",
-                "tot": "jsonata"
-            }
-        ],
-        "action": "",
-        "property": "",
-        "from": "",
-        "to": "",
-        "reg": false,
-        "x": 620,
-        "y": 280,
-        "wires": [
-            [
-                "bdf3af714f3697c5"
             ]
         ]
     },
@@ -2001,7 +2328,7 @@
         "targetType": "full",
         "statusVal": "",
         "statusType": "auto",
-        "x": 1000,
+        "x": 1180,
         "y": 200,
         "wires": []
     },
@@ -2025,68 +2352,171 @@
         "checkall": "true",
         "repair": false,
         "outputs": 2,
-        "x": 200,
-        "y": 280,
-        "wires": [
-            [
-                "9e0ca30c8963d1a3"
-            ],
-            [
-                "bd9b6681ce9f19e8"
-            ]
-        ]
-    },
-    {
-        "id": "9e0ca30c8963d1a3",
-        "type": "change",
-        "z": "45fbecf1fa8ca370",
-        "name": "binary_sensor",
-        "rules": [
-            {
-                "t": "set",
-                "p": "ha_sensorType",
-                "pt": "msg",
-                "to": "binary_sensor",
-                "tot": "str"
-            }
-        ],
-        "action": "",
-        "property": "",
-        "from": "",
-        "to": "",
-        "reg": false,
-        "x": 400,
-        "y": 260,
-        "wires": [
-            [
-                "f13966848e73bd6f"
-            ]
-        ]
-    },
-    {
-        "id": "bd9b6681ce9f19e8",
-        "type": "change",
-        "z": "45fbecf1fa8ca370",
-        "name": "sensor",
-        "rules": [
-            {
-                "t": "set",
-                "p": "ha_sensorType",
-                "pt": "msg",
-                "to": "sensor",
-                "tot": "str"
-            }
-        ],
-        "action": "",
-        "property": "",
-        "from": "",
-        "to": "",
-        "reg": false,
-        "x": 370,
+        "x": 360,
         "y": 300,
         "wires": [
             [
-                "f13966848e73bd6f"
+                "7529e31d451a2a30"
+            ],
+            [
+                "eb6d11f3a711f805"
+            ]
+        ]
+    },
+    {
+        "id": "a423d8fa154eea20",
+        "type": "change",
+        "z": "45fbecf1fa8ca370",
+        "name": "mqtt_topic_ha_config_switch",
+        "rules": [
+            {
+                "t": "set",
+                "p": "topic",
+                "pt": "msg",
+                "to": "\"homeassistant/switch/\" & $globalContext(\"configuration.mqtt.topic\") & \"/\" & $replace(payload.Modbus, \":\", \"\") & \"/config\"",
+                "tot": "jsonata"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 960,
+        "y": 400,
+        "wires": [
+            [
+                "bdf3af714f3697c5"
+            ]
+        ]
+    },
+    {
+        "id": "2043bdc897977583",
+        "type": "change",
+        "z": "45fbecf1fa8ca370",
+        "name": "mqtt_topic_ha_config_number",
+        "rules": [
+            {
+                "t": "set",
+                "p": "topic",
+                "pt": "msg",
+                "to": "\"homeassistant/number/\" & $globalContext(\"configuration.mqtt.topic\") & \"/\" & $replace(payload.Modbus, \":\", \"\") & \"/config\"",
+                "tot": "jsonata"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 970,
+        "y": 440,
+        "wires": [
+            [
+                "bdf3af714f3697c5"
+            ]
+        ]
+    },
+    {
+        "id": "a332e01e36a32bb2",
+        "type": "switch",
+        "z": "45fbecf1fa8ca370",
+        "name": "CheckEntityType",
+        "property": "$substringBefore(payload.Modbus, \":\")\t",
+        "propertyType": "jsonata",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "1",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "3",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "0",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "4",
+                "vt": "str"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 4,
+        "x": 210,
+        "y": 400,
+        "wires": [
+            [
+                "ebc1de458dcaaec0"
+            ],
+            [
+                "ebc1de458dcaaec0"
+            ],
+            [
+                "a423d8fa154eea20"
+            ],
+            [
+                "2043bdc897977583"
+            ]
+        ]
+    },
+    {
+        "id": "7529e31d451a2a30",
+        "type": "change",
+        "z": "45fbecf1fa8ca370",
+        "name": "mqtt_topic_ha_config_binarysensor",
+        "rules": [
+            {
+                "t": "set",
+                "p": "topic",
+                "pt": "msg",
+                "to": "\"homeassistant/binary_sensor/\" & $globalContext(\"configuration.mqtt.topic\") & \"/\" & $replace(payload.Modbus, \":\", \"\") & \"/config\"",
+                "tot": "jsonata"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 600,
+        "y": 260,
+        "wires": [
+            [
+                "bdf3af714f3697c5"
+            ]
+        ]
+    },
+    {
+        "id": "eb6d11f3a711f805",
+        "type": "change",
+        "z": "45fbecf1fa8ca370",
+        "name": "mqtt_topic_ha_config_sensor",
+        "rules": [
+            {
+                "t": "set",
+                "p": "topic",
+                "pt": "msg",
+                "to": "\"homeassistant/sensor/\" & $globalContext(\"configuration.mqtt.topic\") & \"/\" & $replace(payload.Modbus, \":\", \"\") & \"/config\"",
+                "tot": "jsonata"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 580,
+        "y": 340,
+        "wires": [
+            [
+                "bdf3af714f3697c5"
             ]
         ]
     },
@@ -2259,7 +2689,7 @@
         "type": "debug",
         "z": "2eab96853f83d487",
         "name": "debug_selected_coils",
-        "active": true,
+        "active": false,
         "tosidebar": true,
         "console": false,
         "tostatus": false,
@@ -2810,8 +3240,8 @@
         "name": "watch_configuration.json",
         "files": "LK_ICS2_GW_CLIENT_NODERED/configuration.json",
         "recursive": "",
-        "x": 410,
-        "y": 120,
+        "x": null,
+        "y": null,
         "wires": [
             [
                 "1f860201244eec1b"
@@ -3024,7 +3454,7 @@
         "type": "debug",
         "z": "2eab96853f83d487",
         "name": "debug_selected_inputs",
-        "active": true,
+        "active": false,
         "tosidebar": true,
         "console": false,
         "tostatus": false,
@@ -3094,7 +3524,7 @@
         "type": "debug",
         "z": "2eab96853f83d487",
         "name": "debug_selected_InputRegisters",
-        "active": true,
+        "active": false,
         "tosidebar": true,
         "console": false,
         "tostatus": false,
@@ -3164,7 +3594,7 @@
         "type": "debug",
         "z": "2eab96853f83d487",
         "name": "debug_selected_HoldingRegisters",
-        "active": true,
+        "active": false,
         "tosidebar": true,
         "console": false,
         "tostatus": false,
@@ -3583,13 +4013,14 @@
         "z": "2eab96853f83d487",
         "name": "ReadModbus",
         "links": [
-            "1b669a470165f074"
+            "1b669a470165f074",
+            "676ab8da7e704612"
         ],
         "x": 115,
         "y": 980,
         "wires": [
             [
-                "8a864cedeb25240e"
+                "e454629caccfce21"
             ]
         ]
     },
@@ -3618,33 +4049,6 @@
         "x": 1390,
         "y": 1280,
         "wires": []
-    },
-    {
-        "id": "8a864cedeb25240e",
-        "type": "change",
-        "z": "2eab96853f83d487",
-        "name": "",
-        "rules": [
-            {
-                "t": "set",
-                "p": "payload",
-                "pt": "msg",
-                "to": "payload.Modbus",
-                "tot": "msg"
-            }
-        ],
-        "action": "",
-        "property": "",
-        "from": "",
-        "to": "",
-        "reg": false,
-        "x": 250,
-        "y": 980,
-        "wires": [
-            [
-                "e454629caccfce21"
-            ]
-        ]
     },
     {
         "id": "633795079cbdfc32",
@@ -3747,7 +4151,7 @@
         "z": "2eab96853f83d487",
         "g": "a3b444cd358a83f8",
         "name": "debug_polling_error",
-        "active": false,
+        "active": true,
         "tosidebar": true,
         "console": false,
         "tostatus": false,
@@ -4019,7 +4423,7 @@
         "id": "492593bb54334ce2",
         "type": "switch",
         "z": "2eab96853f83d487",
-        "name": "",
+        "name": "mqttEnabled",
         "property": "configuration.mqtt.enable",
         "propertyType": "global",
         "rules": [
@@ -4033,7 +4437,7 @@
         "checkall": "true",
         "repair": false,
         "outputs": 2,
-        "x": 430,
+        "x": 450,
         "y": 2040,
         "wires": [
             [
@@ -4069,7 +4473,7 @@
         "id": "e9753ff8c78fd980",
         "type": "inject",
         "z": "2eab96853f83d487",
-        "name": "REMOVE ME",
+        "name": "trigger_mqtt_configTopics_update",
         "props": [
             {
                 "p": "payload"
@@ -4086,7 +4490,7 @@
         "topic": "",
         "payload": "",
         "payloadType": "date",
-        "x": 210,
+        "x": 190,
         "y": 2100,
         "wires": [
             [
@@ -5773,7 +6177,7 @@
         "id": "e1445d8f1f92599c",
         "type": "switch",
         "z": "2eab96853f83d487",
-        "name": "SelectedEntity",
+        "name": "SelectedFC",
         "property": "payload",
         "propertyType": "msg",
         "rules": [
@@ -5791,7 +6195,7 @@
         "checkall": "false",
         "repair": false,
         "outputs": 2,
-        "x": 580,
+        "x": 570,
         "y": 3340,
         "wires": [
             [
@@ -6392,7 +6796,7 @@
         "id": "05b2fe23aefc4749",
         "type": "switch",
         "z": "2eab96853f83d487",
-        "name": "checkFC",
+        "name": "checkEntityType",
         "property": "$number($substring($flowContext(\"modbusWriteReq\").\tModbus, 0, 1))",
         "propertyType": "jsonata",
         "rules": [
@@ -6410,7 +6814,7 @@
         "checkall": "true",
         "repair": false,
         "outputs": 2,
-        "x": 580,
+        "x": 600,
         "y": 3600,
         "wires": [
             [
@@ -6866,6 +7270,588 @@
         "statusType": "auto",
         "x": 1140,
         "y": 2060,
+        "wires": []
+    },
+    {
+        "id": "fe8fb29535bba9aa",
+        "type": "mqtt in",
+        "z": "2eab96853f83d487",
+        "name": "mqtt_subscribe",
+        "topic": "",
+        "qos": "2",
+        "datatype": "json",
+        "broker": "89f1348330b22bdb",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 1,
+        "x": 1320,
+        "y": 3900,
+        "wires": [
+            [
+                "24a7af9afb23e9f5",
+                "5722559154630a51"
+            ]
+        ]
+    },
+    {
+        "id": "43f1d994f242f080",
+        "type": "comment",
+        "z": "2eab96853f83d487",
+        "name": "subscribe to mqtt 'set' for registers",
+        "info": "",
+        "x": 160,
+        "y": 3820,
+        "wires": []
+    },
+    {
+        "id": "24a7af9afb23e9f5",
+        "type": "debug",
+        "z": "2eab96853f83d487",
+        "name": "debug_mqtt_subscribe",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1560,
+        "y": 3900,
+        "wires": []
+    },
+    {
+        "id": "1ca416c8bfc5e27c",
+        "type": "change",
+        "z": "2eab96853f83d487",
+        "name": "set_mqtt_subscribe",
+        "rules": [
+            {
+                "t": "set",
+                "p": "action",
+                "pt": "msg",
+                "to": "subscribe",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "configuration.pollregisters",
+                "tot": "global"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 330,
+        "y": 3900,
+        "wires": [
+            [
+                "64cc6efd78ccadf7"
+            ]
+        ]
+    },
+    {
+        "id": "aae0812f9841c4c6",
+        "type": "template",
+        "z": "2eab96853f83d487",
+        "name": "",
+        "field": "payload",
+        "fieldType": "msg",
+        "format": "handlebars",
+        "syntax": "mustache",
+        "template": "{{global.configuration.mqtt.topic}}/Modbus/{{payload}}/set",
+        "output": "str",
+        "x": 760,
+        "y": 3900,
+        "wires": [
+            [
+                "11ae4bd79d432fd0"
+            ]
+        ]
+    },
+    {
+        "id": "64cc6efd78ccadf7",
+        "type": "split",
+        "z": "2eab96853f83d487",
+        "name": "split_pollregisters",
+        "splt": "",
+        "spltType": "str",
+        "arraySplt": 1,
+        "arraySpltType": "len",
+        "stream": false,
+        "addname": "",
+        "x": 550,
+        "y": 3900,
+        "wires": [
+            [
+                "aae0812f9841c4c6"
+            ]
+        ]
+    },
+    {
+        "id": "11ae4bd79d432fd0",
+        "type": "join",
+        "z": "2eab96853f83d487",
+        "name": "",
+        "mode": "auto",
+        "build": "object",
+        "property": "payload",
+        "propertyType": "msg",
+        "key": "topic",
+        "joiner": "\\n",
+        "joinerType": "str",
+        "accumulate": true,
+        "timeout": "",
+        "count": "",
+        "reduceRight": false,
+        "reduceExp": "",
+        "reduceInit": "",
+        "reduceInitType": "",
+        "reduceFixup": "",
+        "x": 910,
+        "y": 3900,
+        "wires": [
+            [
+                "4b537e9ce339ae93"
+            ]
+        ]
+    },
+    {
+        "id": "6c29095e1db40fcf",
+        "type": "inject",
+        "z": "2eab96853f83d487",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": true,
+        "onceDelay": "5",
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 110,
+        "y": 3900,
+        "wires": [
+            [
+                "1ca416c8bfc5e27c"
+            ]
+        ]
+    },
+    {
+        "id": "4b537e9ce339ae93",
+        "type": "change",
+        "z": "2eab96853f83d487",
+        "name": "",
+        "rules": [
+            {
+                "t": "move",
+                "p": "payload",
+                "pt": "msg",
+                "to": "topic",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1110,
+        "y": 3900,
+        "wires": [
+            [
+                "fe8fb29535bba9aa"
+            ]
+        ]
+    },
+    {
+        "id": "5722559154630a51",
+        "type": "change",
+        "z": "2eab96853f83d487",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "setValue",
+                "pt": "msg",
+                "to": "payload",
+                "tot": "msg"
+            },
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "$match(topic, /\\d:\\d*/, 1).match\t",
+                "tot": "jsonata"
+            },
+            {
+                "t": "set",
+                "p": "modbusExtAddress",
+                "pt": "msg",
+                "to": "payload",
+                "tot": "msg"
+            },
+            {
+                "t": "set",
+                "p": "topic",
+                "pt": "msg",
+                "to": "payload",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 440,
+        "y": 4000,
+        "wires": [
+            [
+                "8c2e4fabcf747d63"
+            ]
+        ]
+    },
+    {
+        "id": "05ba7d03fe31284f",
+        "type": "modbus-flex-write",
+        "z": "2eab96853f83d487",
+        "name": "",
+        "showStatusActivities": false,
+        "showErrors": true,
+        "server": "d9c8fbc7fe792503",
+        "emptyMsgOnFail": true,
+        "keepMsgProperties": true,
+        "x": 1470,
+        "y": 4060,
+        "wires": [
+            [],
+            [
+                "ecaba43c88c9d858"
+            ]
+        ]
+    },
+    {
+        "id": "9ee45f27c0560438",
+        "type": "template",
+        "z": "2eab96853f83d487",
+        "name": "",
+        "field": "payload",
+        "fieldType": "msg",
+        "format": "handlebars",
+        "syntax": "mustache",
+        "template": "{\n    \"value\": {{writeValueRaw}},\n    \"fc\": {{fc}}, \n    \"unitid\": 1,\n    \"address\": {{address}},\n    \"quantity\": 1\n}",
+        "output": "json",
+        "x": 1240,
+        "y": 4060,
+        "wires": [
+            [
+                "05ba7d03fe31284f",
+                "5df4caae02a1e437"
+            ]
+        ]
+    },
+    {
+        "id": "3605f067e15bd182",
+        "type": "switch",
+        "z": "2eab96853f83d487",
+        "name": "validateNewSetValue",
+        "property": "writeValueRaw >= modbusRegisterInfo.Min and writeValueRaw <= modbusRegisterInfo.Max",
+        "propertyType": "jsonata",
+        "rules": [
+            {
+                "t": "true"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 1,
+        "x": 1200,
+        "y": 4000,
+        "wires": [
+            [
+                "319490ad5468c92d"
+            ]
+        ]
+    },
+    {
+        "id": "319490ad5468c92d",
+        "type": "switch",
+        "z": "2eab96853f83d487",
+        "name": "checkEntityType",
+        "property": "$number($substring(modbusRegisterInfo.Modbus, 0, 1))",
+        "propertyType": "jsonata",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "0",
+                "vt": "num"
+            },
+            {
+                "t": "eq",
+                "v": "4",
+                "vt": "num"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 2,
+        "x": 680,
+        "y": 4060,
+        "wires": [
+            [
+                "ce2c410b384b7053"
+            ],
+            [
+                "c2b1ec58463031d2"
+            ]
+        ]
+    },
+    {
+        "id": "ce2c410b384b7053",
+        "type": "change",
+        "z": "2eab96853f83d487",
+        "name": "coil_fc5",
+        "rules": [
+            {
+                "t": "set",
+                "p": "fc",
+                "pt": "msg",
+                "to": "5",
+                "tot": "num"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 840,
+        "y": 4040,
+        "wires": [
+            [
+                "d1307b43366d5559"
+            ]
+        ]
+    },
+    {
+        "id": "c2b1ec58463031d2",
+        "type": "change",
+        "z": "2eab96853f83d487",
+        "name": "register_fc6",
+        "rules": [
+            {
+                "t": "set",
+                "p": "fc",
+                "pt": "msg",
+                "to": "6",
+                "tot": "num"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 850,
+        "y": 4080,
+        "wires": [
+            [
+                "d1307b43366d5559"
+            ]
+        ]
+    },
+    {
+        "id": "d1307b43366d5559",
+        "type": "change",
+        "z": "2eab96853f83d487",
+        "name": "setAddress",
+        "rules": [
+            {
+                "t": "set",
+                "p": "address",
+                "pt": "msg",
+                "to": "$number($substring(modbusRegisterInfo.Modbus, 2)) - 1",
+                "tot": "jsonata"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1050,
+        "y": 4060,
+        "wires": [
+            [
+                "9ee45f27c0560438"
+            ]
+        ]
+    },
+    {
+        "id": "ecaba43c88c9d858",
+        "type": "switch",
+        "z": "2eab96853f83d487",
+        "name": "CheckIfError",
+        "property": "error",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "nnull"
+            },
+            {
+                "t": "else"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 2,
+        "x": 1690,
+        "y": 4040,
+        "wires": [
+            [
+                "8171b62a1499bd76",
+                "66338b94943efac5"
+            ],
+            [
+                "66338b94943efac5",
+                "676ab8da7e704612"
+            ]
+        ]
+    },
+    {
+        "id": "8171b62a1499bd76",
+        "type": "change",
+        "z": "2eab96853f83d487",
+        "d": true,
+        "name": "error.message",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "error.message",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1920,
+        "y": 4000,
+        "wires": [
+            [
+                "66338b94943efac5"
+            ]
+        ]
+    },
+    {
+        "id": "d52e3e072e5529a2",
+        "type": "change",
+        "z": "2eab96853f83d487",
+        "name": "setRawWriteValue",
+        "rules": [
+            {
+                "t": "move",
+                "p": "payload",
+                "pt": "msg",
+                "to": "modbusRegisterInfo",
+                "tot": "msg"
+            },
+            {
+                "t": "set",
+                "p": "writeValueRaw",
+                "pt": "msg",
+                "to": "setValue / modbusRegisterInfo.Scaling\t",
+                "tot": "jsonata"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 950,
+        "y": 4000,
+        "wires": [
+            [
+                "3605f067e15bd182"
+            ]
+        ]
+    },
+    {
+        "id": "8c2e4fabcf747d63",
+        "type": "subflow:c0f18c4adc5a6baf",
+        "z": "2eab96853f83d487",
+        "name": "",
+        "x": 660,
+        "y": 4000,
+        "wires": [
+            [
+                "d52e3e072e5529a2"
+            ]
+        ]
+    },
+    {
+        "id": "66338b94943efac5",
+        "type": "debug",
+        "z": "2eab96853f83d487",
+        "name": "debug_mqtt_set_writeResponse",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 2230,
+        "y": 4060,
+        "wires": []
+    },
+    {
+        "id": "5df4caae02a1e437",
+        "type": "debug",
+        "z": "2eab96853f83d487",
+        "name": "debug_mqtt_set_writeReq",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1490,
+        "y": 4140,
+        "wires": []
+    },
+    {
+        "id": "676ab8da7e704612",
+        "type": "link out",
+        "z": "2eab96853f83d487",
+        "name": "",
+        "mode": "link",
+        "links": [
+            "57173a16777b9774"
+        ],
+        "x": 1845,
+        "y": 4120,
         "wires": []
     },
     {
