@@ -4,6 +4,9 @@ import pty
 import os
 import argparse
 import signal
+# xlsx excel file handling
+#import pandas as pd
+from openpyxl import load_workbook
 import serial
 import serial.rs485
 import sys
@@ -59,13 +62,47 @@ class ModbusRtuEmulator:
             log.setLevel(logging.INFO)
         self.log = log
 
+    def CreateDataBlocksFromXLSX(self):
+        # sub function to
+        def create_register_values(ws):
+            registers = {}
+            for row in ws.iter_rows(min_row=2, values_only=True):
+                pass
+                address = int(row[0].split(':')[1])
+                minval = int(row[3])
+                if type(row[4]) == str:
+                    maxval = int(row[4], 0)
+                else:
+                    maxval = row[4]
+                initval = int(maxval - ((maxval - minval) // 2))
+                registers[address] = initval
+            return registers
+        datablocks = {}
+        # Load the xlsx file
+        #excel_data = pd.read_excel('ICS.2 Modbus Registers 2019-01-10.xlsx')
+        # Read the values of the file in the dataframe
+        #data = pd.DataFrame(excel_data, columns=['Sales Date', 'Sales Person', 'Amount'])
+        wb = load_workbook(filename=os.path.dirname(__file__) +'/ICS.2 Modbus Registers 2019-01-10.xlsx')
+        datablocks['co'] = create_register_values(wb['Coils'])
+        datablocks['di'] = create_register_values(wb['Inputs']) # discrete inputs
+        datablocks['ir'] = create_register_values(wb['Input Registers'])
+        datablocks['hr'] = create_register_values(wb['Holding Registers'])
+        return datablocks
+
     def run_server(self):
         # setup registers
+        # create datablocks from excel file
+        datablocks = self.CreateDataBlocksFromXLSX()
+
         slavecontext = ModbusSlaveContext(
-            di=ModbusSequentialDataBlock(0, [1]*11320),
-            co=ModbusSequentialDataBlock(0, [1]*11256),
-            hr=ModbusSequentialDataBlock(0, [257]*14648),
-            ir=ModbusSequentialDataBlock(0, [257]*11640))
+            di=ModbusSparseDataBlock(datablocks['di'], False),
+            co=ModbusSparseDataBlock(datablocks['co'], False),
+            hr=ModbusSparseDataBlock(datablocks['hr'], False),
+            ir=ModbusSparseDataBlock(datablocks['ir'], False))
+            #di=ModbusSequentialDataBlock(0, [1]*11320),
+            #co=ModbusSequentialDataBlock(0, [1]*11256),
+            #hr=ModbusSequentialDataBlock(0, [257]*14648),
+            #ir=ModbusSequentialDataBlock(0, [257]*11640))
         # setup slave id's
         slaves = {
                  0x01: slavecontext
