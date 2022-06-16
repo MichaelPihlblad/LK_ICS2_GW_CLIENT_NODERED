@@ -108,37 +108,6 @@ wifi can be set up in many different ways:
 3. Continue with: [Install generic, step 2](#install---generic)
 
 
-## Development in docker
-Note: This is much faster than developing in QEMU or on target. The docker environment is set up to run the python emulator and use it in the config file.
-
-From the git repo folder, i.e. ~/LK_ICS2_GW_CLIENT_NODERED 
-
-1. Build container: `docker build -t lkics2/node-red .`  
-2. Create container: `docker run -it -p 1880:1880 -v [absolute path to LK_ICS2_GW_CLIENT_NODERED]:/LK_ICS2_GW_CLIENT_NODERED --name lkics2-nodered lkics2/node-red`  
-  Notes: 
-    * This will mount the git repo as /LK_ICS2_GW_CLIENT_NODERED inside docker
-    * change volume path to where you have the git repo checked out. 
-    * If container already exists use start and exec commands below instead, or first remove the container: `docker rm lkics2-nodered`
-    
- 
-* to start existing container: `docker start -ai lkics2-nodered`
-* to start a new shell on a running instance of the container: `docker exec -it lkics2-nodered /bin/bash`
-* to get logs from the container: `docker logs lkics2-nodered`
-
-
-## Python emulator for testing
-* install python3 modules dependencies (i.g. using pip install):
-  * pyserial
-  * pymodbus
-* Start emulator with: `python ModbusRtuEmulator.py`
-
-
-## Howto run raspberry image under qemu for local dev on PC
-Note: this is slow, consider using [Development in Docker](#development-in-docker) instead!
-1. Follow this guide: https://linuxconfig.org/how-to-run-the-raspberry-pi-os-in-a-virtual-machine-with-qemu-and-kvm
-2. Download qemu raspberry kernel image: https://github.com/dhruvvyas90/qemu-rpi-kernel
-
-
 ## Troubleshooting
 * Raspberry Wifi - make sure to set country code in wifi config. If still not working check that wifi is not blocked and manually unblock
   ```bash
@@ -161,3 +130,42 @@ Note: this is slow, consider using [Development in Docker](#development-in-docke
 * Implement writing registers by mqtt
 * implement dynamic UI setting of unitid/slaveid and baudrate e.t.c.
 * UI improvements
+
+
+DEVELOPMENT
+===========
+
+## Development in docker
+Note: This is much faster than developing in QEMU or on target. The docker environment is set up to run the python emulator and use it in the config file.
+
+From the git repo folder, i.e. ~/LK_ICS2_GW_CLIENT_NODERED 
+
+1. Build container: `docker build -t lkics2/node-red .`  
+2. Create container: `docker run -it -p 1880:1880 -v [absolute path to LK_ICS2_GW_CLIENT_NODERED]:/LK_ICS2_GW_CLIENT_NODERED --name lkics2-nodered lkics2/node-red`  
+  Notes: 
+    * This will mount the git repo as /LK_ICS2_GW_CLIENT_NODERED inside docker
+    * change volume path to where you have the git repo checked out. 
+    * If container already exists use start and exec commands below instead, or first remove the container: `docker rm lkics2-nodered`
+    
+ 
+* to start existing container: `docker start -ai lkics2-nodered`
+* to start a new shell on a running instance of the container: `docker exec -it lkics2-nodered /bin/bash`
+* to get logs from the container: `docker logs lkics2-nodered`
+
+
+## Python modbus emulator for testing
+* install python3 modules dependencies (i.g. using pip install):
+  * pyserial
+  * pymodbus
+  * openpyxl
+* Start emulator with: `python ModbusRtuEmulator.py [--updateconfig] [--debug]` (see --help, emulator can update config file with correct serial terminal device)
+
+
+## Homeassistant docker for testing
+It is very easy and quick to use homeassistant docker image for verification, follow: https://www.home-assistant.io/installation/linux/#install-home-assistant-container  
+
+
+## Howto run raspberry image under qemu for local dev on PC
+Note: this is slow, consider using [Development in Docker](#development-in-docker) instead!
+1. Follow this guide: https://linuxconfig.org/how-to-run-the-raspberry-pi-os-in-a-virtual-machine-with-qemu-and-kvm
+2. Download qemu raspberry kernel image: https://github.com/dhruvvyas90/qemu-rpi-kernel
